@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { Router} from '@angular/router';
-import { NgForm} from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-form',
@@ -9,18 +9,24 @@ import { NgForm} from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   
-  form = 'form';
-  userEmail!:string;
-  // userEmail:string="votre adressemail@novwell.fr";// valeur inscrite par défaut
+  form!: FormGroup;
   
-  constructor() { }
+  
+  constructor( private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      nom:[null],
+      prenom:[null],
+      adresseMail:[null],
+      telephone: [null],
+      message: [null]
+    });
+  }
+  // Méthodes
+  onSubmitForm(): void {
+    console.log(this.form.value);
   }
 
-  onSubmitForm(form :NgForm):void {
-    console.log(form.value);
-    
-  }
 
 }
