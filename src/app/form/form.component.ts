@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router} from '@angular/router';
+import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -16,8 +18,8 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmitForm(){
-    console.log(this.userEmail);
+  onSubmitForm(form :NgForm):void {
+    console.log(form.value);
     
   }
 
